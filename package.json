@@ -1,0 +1,44 @@
+{
+  "name": "nuxt-signalr",
+  "version": "0.0.0",
+  "description": "ASP.Net SignalR module for nuxt ",
+  "repository": "",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Bitbu Team"
+    }
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/module.js",
+  "scripts": {
+    "dev": "nuxt example",
+    "lint": "eslint --ext .js,.vue .",
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish",
+    "test": "yarn lint && jest"
+  },
+  "devDependencies": {
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "@nuxtjs/eslint-config": "latest",
+    "@nuxtjs/module-test-utils": "latest",
+    "babel-eslint": "latest",
+    "babel-jest": "latest",
+    "eslint": "latest",
+    "husky": "latest",
+    "jest": "latest",
+    "nuxt-edge": "latest",
+    "standard-version": "latest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@microsoft/signalr": "^6.0.0-rc.2.21480.10",
+    "cookie-universal": "^2.1.5"
+  }
+}
