@@ -1,6 +1,6 @@
 {
   "name": "nuxt-signalr",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ASP.Net SignalR module for nuxt ",
   "repository": "",
   "license": "MIT",
