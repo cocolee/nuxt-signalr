@@ -6,9 +6,9 @@
 
 <script>
 export default {
-  async created () {
-    await this.$signalRHub.StartHub()
-    await this.$signalRHub.JoinHubGroup([
+  async asyncData (ctx) {
+    await ctx.$signalRHub.StartHub()
+    await ctx.$signalRHub.JoinHubGroup([
       'JoinMarketHubLiteGroupAsync',
       'marketSummary'
     ])
@@ -16,11 +16,9 @@ export default {
   async mounted () {
     console.log('mounred =========> ', await this.$signalRHubConnection)
     await this.$signalRHubConnection.off('marketSummary')
-    setTimeout(() => {
-      this.$signalRHubConnection.on('marketSummary', (summary) => {
+    this.$signalRHubConnection.on('marketSummary', (summary) => {
         console.log('summary =============> ', summary)
       })
-    }, 500);
     // console.log('asdasdasd=>>>', await this.$signalRHubConnection)
     // console.log('this.$signalRHub.Connection.state', this.$signalRHub.Connection.state)
     // console.log('this.$signalRHub.Connection', await this.$signalRHub.ConnectionState)
