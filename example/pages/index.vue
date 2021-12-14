@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import Cookies from 'cookie-universal';
+
 export default {
   // async asyncData (ctx) {
   //   await ctx.$signalRHub.Connect()
@@ -16,8 +18,9 @@ export default {
   //   ])
   // },
   async beforeMount () {
-    await this.$signalRHub.Connect()
+    // await this.$signalRHub.Connect()
     await this.$signalRHub.StartHub()
+    await this.$signalRHub.CallHubMethods()
     await this.$signalRHub.JoinHubGroup([
       'JoinMarketHubLiteGroupAsync',
       'marketSummary'
@@ -38,8 +41,11 @@ export default {
     // })
   },
   methods: {
-    reConnect() {
-      this.$signalRHub.Connect()
+    async reConnect() {
+      const cookies = Cookies();
+      console.log('asdasdasd=>', cookies)
+      cookies.set('auth', 'Pacman');
+      this.$signalRHub.ReConnection()
     }
   },
 }
