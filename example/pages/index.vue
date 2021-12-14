@@ -1,6 +1,7 @@
 <template>
   <div>
     <nuxt-link to="/about">About</nuxt-link>
+    <a @click="reConnect">RE CONNECT</a>
   </div>
 </template>
 
@@ -24,7 +25,7 @@ export default {
   },
   async mounted () {
     // console.log('mounred =========> ', await this.$signalRHubConnection)
-    await this.$signalRHub.ReconnectHubGroup()
+    // await this.$signalRHub.ReconnectHubGroup()
     await this.$signalRHubConnection.off('marketSummary')
     this.$signalRHubConnection.on('marketSummary', (summary) => {
         console.log('summary =============> ', summary)
@@ -35,6 +36,11 @@ export default {
     // await this.$signalRHub.addHubListener('marketSummary', 'summary').then((res) => {
     //   console.log('index res', res)
     // })
+  },
+  methods: {
+    reConnect() {
+      this.$signalRHub.Connect()
+    }
   },
 }
 </script>
